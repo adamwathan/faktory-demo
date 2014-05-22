@@ -1,6 +1,6 @@
 <?php
 
-class UserTest extends FunctionalTestCase
+class AccountTest extends FunctionalTestCase
 {
     public function test_can_calculate_balance()
     {
