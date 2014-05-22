@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration {
 			$table->string('province');
 			$table->string('country');
 			$table->string('postal_code');
-			$table->boolean('is_admin')->default(0);
+			$table->boolean('is_admin')->default(false);
 
 			$table->string('remember_token')->nullable();
 			$table->timestamps();

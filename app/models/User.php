@@ -10,8 +10,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface
 
     protected $hidden = ['password'];
 
-    public function calculateNetWorth()
+    public function getAllAccounts()
     {
-        return $this->accounts->sum('balance');
+        return Account::all();
     }
 }

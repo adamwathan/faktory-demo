@@ -2,9 +2,9 @@
 
 class UserTest extends FunctionalTestCase
 {
-    public function test_can_get_net_worth()
+    public function test_admin_can_get_all_accounts()
     {
-        $user = User::create([
+        $admin = User::create([
             'email' => 'example@example.com',
             'password' => Hash::make('foobar'),
             'first_name' => 'John',
@@ -15,33 +15,28 @@ class UserTest extends FunctionalTestCase
             'province' => 'Ontario',
             'country' => 'Canada',
             'postal_code' => 'ABC123',
+            'is_admin' => true
         ]);
 
-        $user->accounts = new Illuminate\Support\Collection([
-            (object) ['balance' => 80000],
-            (object) ['balance' => 40000],
-            (object) ['balance' => 30000],
+        $account1 = Account::create([
+            'user_id' => 1,
+            'name' => 'Chequing',
+            'account_number' => '1',
         ]);
 
-        // $account1 = Account::create([
-        //     'user_id' => $user->id,
-        //     'name' => 'Chequing',
-        //     'account_number' => '1',
-        // ]);
+        $account2 = Account::create([
+            'user_id' => 2,
+            'name' => 'Savings',
+            'account_number' => '2',
+        ]);
 
-        // $account2 = Account::create([
-        //     'user_id' => $user->id,
-        //     'name' => 'Savings',
-        //     'account_number' => '2',
-        // ]);
+        $account3 = Account::create([
+            'user_id' => 3,
+            'name' => 'RRSP',
+            'account_number' => '3',
+        ]);
 
-        // $account3 = Account::create([
-        //     'user_id' => $user->id,
-        //     'name' => 'RRSP',
-        //     'account_number' => '3',
-        // ]);
-
-
-        $this->assertEquals(150000, $user->calculateNetWorth());
+        $accounts = $admin->getAllAccounts();
+        $this->assertEquals(3, count($accounts));
     }
 }

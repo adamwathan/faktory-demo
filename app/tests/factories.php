@@ -17,3 +17,20 @@ Faktory::define(['transaction', 'Transaction'], function($f) {
     $f->description = 'Starbucks';
     $f->amount = 1000;
 });
+
+Faktory::define(['user', 'User'], function($f) {
+    $f->email = 'example@example.com';
+    $f->password = Hash::make('foobar');
+    $f->first_name = 'John';
+    $f->last_name = 'Doe';
+    $f->date_of_birth = new DateTime('1991-10-12');
+    $f->phone_number = '555-555-5555';
+    $f->street_address = '123 Fake St';
+    $f->province = 'Ontario';
+    $f->country = 'Canada';
+    $f->postal_code = 'ABC123';
+
+    $f->define('admin', function($f) {
+        $f->is_admin = true;
+    });
+});
