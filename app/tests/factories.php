@@ -19,7 +19,9 @@ Faktory::define(['transaction', 'Transaction'], function($f) {
 });
 
 Faktory::define(['user', 'User'], function($f) {
-    $f->email = 'example@example.com';
+    $f->email = function($f, $i) {
+        return 'example' . $i . '@example.com';
+    };
     $f->password = Hash::make('foobar');
     $f->first_name = 'John';
     $f->last_name = 'Doe';

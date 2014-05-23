@@ -12,19 +12,19 @@ class AccountTest extends FunctionalTestCase
 
         $transaction1 = Transaction::create([
             'account_id' => $account->id,
-            'description' => 'Chequing',
+            'description' => 'Sweet badass paycheck!',
             'amount' => 10000,
         ]);
 
         $transaction2 = Transaction::create([
             'account_id' => $account->id,
-            'description' => 'Savings',
+            'description' => 'Latte',
             'amount' => -500,
         ]);
 
         $transaction3 = Transaction::create([
             'account_id' => $account->id,
-            'description' => 'RRSP',
+            'description' => 'Chromecast',
             'amount' => -3700,
         ]);
 
